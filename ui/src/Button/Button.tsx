@@ -1,9 +1,12 @@
 import styles from './Button.module.scss';
+export interface ButtonProps {
+  text: string
+}
 
-export function Button() {
+export function Button({ text }: ButtonProps) {
   return (
     <div className={styles['container']}>
-      <h1>Welcome to Button!</h1>
+      <button>{text}</button>
     </div>
   );
 }

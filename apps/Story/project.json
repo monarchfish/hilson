@@ -1,0 +1,12 @@
+{
+  "name": "Story",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/Story/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project Story --web",
+  "targets": {},
+  "implicitDependencies": [
+    "ui"
+  ]
+}
