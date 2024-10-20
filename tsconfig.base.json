@@ -15,10 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hilson/HilsonButton": ["ui/HilsonButton/src/index.ts"],
-      "@hilson/HilsonTitle": ["ui/HilsonTitle/src/index.ts"],
-      "@hilson/home": ["pages/home/src/index.ts"],
-      "@hilson/login": ["pages/login/src/index.ts"]
+      "@hilson/pages": ["pages/src/index.ts"],
+      "@hilson/ui": ["ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

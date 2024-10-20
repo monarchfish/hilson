@@ -1,4 +1,4 @@
-import { Home } from '@hilson/home'
+import { Home } from '@hilson/pages'
 
 export default function Index() {
   return (
