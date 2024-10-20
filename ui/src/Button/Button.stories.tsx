@@ -6,6 +6,11 @@ import { expect } from '@storybook/jest';
 const meta: Meta<typeof Button> = {
   component: Button,
   title: 'UI/Button',
+  decorators: (Story) => (
+    <div style={{ padding: 16 }}>
+        <Story />
+    </div>
+  )
 };
 export default meta;
 type Story = StoryObj<typeof Button>;

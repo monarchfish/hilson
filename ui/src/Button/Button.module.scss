@@ -1,7 +1,10 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.container {
+    display: inline;
+    padding: 16px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: rgb(130, 223, 69);
+    &:hover {
+        opacity: 0.5;
+    }
+}

@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "web:dev": "nx dev web",
-    "story": "pnpm nx storybook Story"
+    "story": "pnpm nx storybook Story --port=5278"
   },
   "private": true,
   "dependencies": {

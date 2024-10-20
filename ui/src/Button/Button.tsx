@@ -6,7 +6,7 @@ export interface ButtonProps {
 export function Button({ text }: ButtonProps) {
   return (
     <div className={styles['container']}>
-      <button>{text}</button>
+      {text}
     </div>
   );
 }
