@@ -1,7 +1,7 @@
-import { Home } from '@hilson/home'
+import { Login } from '@hilson/login'
 
 export default function Index() {
   return (
-    <Home />
+    <Login />
   );
 }
