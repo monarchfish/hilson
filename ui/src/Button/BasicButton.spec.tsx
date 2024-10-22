@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Button from './Button';
+import { BasicButton } from './BasicButton';
 
 describe('Button', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Button />);
+    const { baseElement } = render(<BasicButton text={''} variant='contained' />);
     expect(baseElement).toBeTruthy();
   });
 });
