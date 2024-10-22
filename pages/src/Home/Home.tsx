@@ -1,11 +1,12 @@
 import styles from './Home.module.scss';
-import { Button } from '@hilson/ui' 
+import { BasicButton } from '@hilson/ui';
+
 
 export function Home() {
   return (
     <div className={styles['container']}>
       <h1>Welcome to Home!</h1>
-      <Button />
+      <BasicButton text="test Button" variant='contained' />
     </div>
   );
 }

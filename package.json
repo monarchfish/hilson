@@ -3,10 +3,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev:web": "nx dev web"
+    "web:dev": "nx dev web",
+    "story": "pnpm nx storybook Story --port=5278"
   },
   "private": true,
   "dependencies": {
+    "@emotion/css": "^11.13.4",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.4",
     "next": "14.2.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -23,8 +28,19 @@
     "@nx/next": "19.7.4",
     "@nx/playwright": "19.7.4",
     "@nx/react": "19.7.4",
+    "@nx/storybook": "19.7.4",
+    "@nx/vite": "19.7.4",
+    "@nx/web": "19.7.4",
     "@nx/workspace": "19.7.4",
     "@playwright/test": "^1.36.0",
+    "@storybook/addon-essentials": "^8.2.8",
+    "@storybook/addon-interactions": "^8.2.8",
+    "@storybook/core-server": "^8.2.8",
+    "@storybook/jest": "^0.2.3",
+    "@storybook/react": "^8.2.8",
+    "@storybook/react-vite": "^8.2.8",
+    "@storybook/test-runner": "^0.13.0",
+    "@storybook/testing-library": "^0.2.2",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
@@ -35,6 +51,7 @@
     "@types/react-dom": "18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
+    "@vitejs/plugin-react": "^4.2.0",
     "babel-jest": "^29.7.0",
     "eslint": "~8.57.0",
     "eslint-config-next": "14.2.3",
@@ -49,9 +66,11 @@
     "nx": "19.7.4",
     "prettier": "^2.6.2",
     "sass": "1.62.1",
+    "storybook": "^8.2.8",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
-    "typescript": "~5.5.2"
+    "typescript": "~5.5.2",
+    "vite": "^5.0.0"
   },
   "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
 }
