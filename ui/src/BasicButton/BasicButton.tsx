@@ -11,5 +11,5 @@ export function BasicButton({ text, variant }: ButtonProps) {
 
   return (
     <Button variant={variant} className={`${styles.root}`}> {text}</Button >
-  );
+  )
 }

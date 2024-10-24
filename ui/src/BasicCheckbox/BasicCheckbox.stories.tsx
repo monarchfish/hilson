@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BasicButton } from './BasicButton';
+import { BasicCheckbox } from './BasicCheckbox';
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
-const meta: Meta<typeof BasicButton> = {
-  component: BasicButton,
-  title: 'UI/Button',
+const meta: Meta<typeof BasicCheckbox> = {
+  component: BasicCheckbox,
+  title: 'UI/BasicCheckbox',
   decorators: (Story) => (
     <div style={{ padding: 16 }}>
       <Story />
@@ -13,7 +13,7 @@ const meta: Meta<typeof BasicButton> = {
   )
 };
 export default meta;
-type Story = StoryObj<typeof BasicButton>;
+type Story = StoryObj<typeof BasicCheckbox>;
 
 export const Primary = {
   args: {
