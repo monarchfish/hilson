@@ -1,0 +1,21 @@
+.container {
+  .brandImg {
+    height: 30px;
+    width: auto;
+    margin: 0;
+  }
+
+  :global {
+    .MuiContainer-root {
+      margin: 0;
+    }
+
+    .MuiBox-root {
+      padding-left: 16px;
+
+      .MuiButton-root {
+        font-weight: 600;
+      }
+    }
+  }
+}
