@@ -1,8 +1,8 @@
-import type { StorybookConfig } from '@storybook/react-vite';
-
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { mergeConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+
+import { StorybookConfig } from '@storybook/nextjs';
 
 const config: StorybookConfig = {
   stories: ['../../../ui/src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
@@ -11,7 +11,7 @@ const config: StorybookConfig = {
     autodocs: 'tag',
   },
   framework: {
-    name: '@storybook/react-vite',
+    name: '@storybook/nextjs',
     options: {},
   },
 
