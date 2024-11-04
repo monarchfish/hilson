@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import Icon from './icon.svg';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface basicLayoutType {
   children: React.ReactNode
@@ -22,7 +23,20 @@ interface basicLayoutType {
 export function BasicLayout({
   children
 }: basicLayoutType) {
-  const pages = ['CSV To Excel', 'Excel To CSV'];
+  const pages = [
+    {
+      label: 'JSON To CSV',
+      link: '/jsonToCsv'
+    },
+    {
+      label: 'CSV To Excel',
+      link: '/jsonToCsv'
+    },
+    {
+      label: 'Excel To CSV',
+      link: '/jsonToCsv'
+    }
+  ]
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
@@ -68,21 +82,25 @@ export function BasicLayout({
                 sx={{ display: { xs: 'block', md: 'none' } }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                  <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                    <Link href={page.link}><Typography sx={{ textAlign: 'center' }}>{page.label}</Typography></Link>
+
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: '#161616', display: 'block' }}
-                >
-                  {page}
-                </Button>
+                <Link href={page.link}>
+                  <Button
+                    key={page.label}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: '#161616', display: 'block' }}
+                  >
+                    {page.label}
+                  </Button>
+                </Link>
+
               ))}
             </Box>
           </Toolbar>
