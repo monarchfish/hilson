@@ -82,18 +82,16 @@ export function BasicLayout({
                 sx={{ display: { xs: 'block', md: 'none' } }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                  <MenuItem key={`${page.label}_nav`} onClick={handleCloseNavMenu}>
                     <Link href={page.link}><Typography sx={{ textAlign: 'center' }}>{page.label}</Typography></Link>
-
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <Link href={page.link}>
+                <Link key={page.label} href={page.link}>
                   <Button
-                    key={page.label}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: '#161616', display: 'block' }}
                   >
