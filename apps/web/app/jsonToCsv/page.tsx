@@ -1,4 +1,4 @@
-import { JsonToCsv } from '@hilson/pages'
+import { JsonToCsv } from './JsonToCsv'
 
 export default function Index() {
   return (

@@ -1,4 +1,4 @@
-import { BasicLayout } from '@hilson/pages'
+import { BasicLayout } from './basicLayout/BasicLayout';
 import './global.scss'
 
 export const metadata = {

@@ -1,4 +1,4 @@
-import { Login } from '@hilson/pages'
+import { Login } from './Login';
 
 export default function Index() {
   return (
