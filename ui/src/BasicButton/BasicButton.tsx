@@ -1,6 +1,6 @@
 'use client';
 import Button from '@mui/material/Button';
-import * as styles from './BasicButton.styles';
+import styles from './BasicButton.module.scss';
 import { clsx } from 'clsx';
 
 export interface ButtonProps {

@@ -1,10 +1,10 @@
 'use client'
 import Checkbox from '@mui/material/Checkbox';
-import * as styles from './BasicCheckbox.styles';
+import styles from './BasicCheckbox.module.scss';
 
 export function BasicCheckbox() {
   return (
-    <Checkbox className={styles.root}/>
+    <Checkbox className={styles.root} />
   );
 }
 
