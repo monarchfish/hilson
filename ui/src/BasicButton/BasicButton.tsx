@@ -1,6 +1,7 @@
 'use client';
 import Button from '@mui/material/Button';
 import * as styles from './BasicButton.styles';
+import { clsx } from 'clsx';
 
 export interface ButtonProps {
   text: string;
@@ -15,13 +16,15 @@ export function BasicButton({
   variant,
   onClick,
   className,
-  disabled = false
+  disabled = false,
 }: ButtonProps) {
+  const btnStyle = clsx(styles.root, className || '');
+
   return (
     <Button
       variant={variant}
       onClick={onClick}
-      className={`${styles.root} ${className || ''}`}
+      className={btnStyle}
       disabled={disabled}
     >
       {text}
