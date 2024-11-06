@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import styles from './JsonToCsv.module.scss';
 import { useState } from 'react';
 import * as XLSX from 'xlsx';
@@ -33,7 +33,7 @@ export function JsonToCsv() {
       // 生成 CSV
       const csvOutput = XLSX.write(workbook, {
         bookType: 'csv',
-        type: 'array'
+        type: 'array',
       });
 
       // 創建 Blob 並下載
@@ -42,15 +42,19 @@ export function JsonToCsv() {
 
       setError('');
     } catch (err) {
-      setError(err.message || '轉換過程中發生錯誤');
+      if (err instanceof Error) {
+        setError(err.message || '轉換過程中發生錯誤');
+      } else {
+        console.log('未知错误', err);
+      }
     }
   };
 
   const handleSampleData = () => {
     const sampleData = [
-      { id: 1, name: "John", age: 30, city: "New York" },
-      { id: 2, name: "Jane", age: 25, city: "Los Angeles" },
-      { id: 3, name: "Bob", age: 35, city: "Chicago" }
+      { id: 1, name: 'John', age: 30, city: 'New York' },
+      { id: 2, name: 'Jane', age: 25, city: 'Los Angeles' },
+      { id: 3, name: 'Bob', age: 35, city: 'Chicago' },
     ];
     setJsonData(JSON.stringify(sampleData, null, 2));
   };
@@ -84,13 +88,20 @@ export function JsonToCsv() {
 
       {error && <div className={styles.error}>{error}</div>}
 
-      <BasicButton onClick={convertJsonToCsv}
+      <BasicButton
+        onClick={convertJsonToCsv}
         disabled={!jsonData}
-        className={styles.button} text="轉換並下載 CSV" variant='contained' />
-
-      <BasicButton onClick={handleSampleData}
         className={styles.button}
-        text="載入範例資料" variant='contained' />
+        text="轉換並下載 CSV"
+        variant="contained"
+      />
+
+      <BasicButton
+        onClick={handleSampleData}
+        className={styles.button}
+        text="載入範例資料"
+        variant="contained"
+      />
     </div>
   );
 }
