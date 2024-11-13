@@ -24,6 +24,10 @@ export function BasicLayout({
       link: '/jsonToCsv'
     },
     {
+      label: 'CSV To JSON',
+      link: '/csvToJson'
+    },
+    {
       label: 'CSV To Excel',
       link: '/jsonToCsv'
     },
