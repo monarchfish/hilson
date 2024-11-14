@@ -11,13 +11,7 @@ import Icon from './icon.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface basicLayoutType {
-  children?: React.ReactNode
-}
-
-export function BasicLayout({
-  children
-}: basicLayoutType) {
+function Header() {
   const pages = [
     {
       label: 'JSON To CSV',
@@ -29,7 +23,7 @@ export function BasicLayout({
     },
     {
       label: 'CSV To Excel',
-      link: '/jsonToCsv'
+      link: '/csvToXlsx'
     },
     {
       label: 'Excel To CSV',
@@ -38,27 +32,54 @@ export function BasicLayout({
   ]
 
   return (
-    <div className={styles['container']}>
-      <AppBar position="static" color='transparent' style={{ margin: 0 }}>
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
+    <AppBar position="static" color='transparent' style={{ margin: 0 }}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Link href="/">
             <Image src={Icon} alt="" className={styles.brandImg} />
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
-                <Link key={page.label} href={page.link}>
-                  <Button
-                    sx={{ my: 2, color: '#161616', display: 'block' }}
-                  >
-                    {page.label}
-                  </Button>
-                </Link>
+          </Link>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Link key={page.label} href={page.link}>
+                <Button
+                  sx={{ my: 2, color: '#161616', display: 'block' }}
+                >
+                  {page.label}
+                </Button>
+              </Link>
 
-              ))}
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
+            ))}
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  )
+}
+
+function Footer() {
+  return (
+    <div className={styles.footer}>
+      <hr className={styles.dashedLine} />
+      <p className={styles.slogon}>
+        © iLoveDataFormatter {new Date().getFullYear()} ® - Your Data Editor
+      </p>
+    </div>
+  )
+}
+
+interface basicLayoutType {
+  children?: React.ReactNode
+}
+
+export function BasicLayout({
+  children
+}: basicLayoutType) {
+
+  return (
+    <div className={styles['container']}>
+      <Header />
       {children}
+      <Footer />
     </div >
   );
 }

@@ -5,6 +5,22 @@
     margin: 0;
   }
 
+  .footer {
+    .dashedLine {
+      border: 0;
+      border-top: 2px dashed #a2a9b6;
+      margin: 0 80px;
+    }
+
+    .slogon {
+      line-height: 28px;
+      font-size: 16px;
+      font-weight: 400;
+      text-align: right;
+      padding: 0 80px;
+    }
+  }
+
   :global {
     .MuiContainer-root {
       margin: 0;
