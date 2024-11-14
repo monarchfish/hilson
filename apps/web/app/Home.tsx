@@ -29,6 +29,11 @@ function ToolList() {
       content: 'Convert JSON data to CSV file',
       link: '/jsonToCsv',
     },
+    {
+      title: 'CSV To XLSX',
+      content: 'Convert CSV data to XLSX file',
+      link: '/csvToXlsx',
+    },
   ];
   return (
     <div className={styles.cardList}>

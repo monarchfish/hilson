@@ -88,20 +88,22 @@ export function JsonToCsv() {
 
       {error && <div className={styles.error}>{error}</div>}
 
-      <BasicButton
-        onClick={convertJsonToCsv}
-        disabled={!jsonData}
-        className={styles.button}
-        text="轉換並下載 CSV"
-        variant="contained"
-      />
+      <div className={styles.buttonGroup}>
+        <BasicButton
+          onClick={convertJsonToCsv}
+          disabled={!jsonData}
+          className={styles.button}
+          text="轉換並下載 CSV"
+          variant="contained"
+        />
 
-      <BasicButton
-        onClick={handleSampleData}
-        className={styles.button}
-        text="載入範例資料"
-        variant="contained"
-      />
+        <BasicButton
+          onClick={handleSampleData}
+          className={styles.button}
+          text="載入範例資料"
+          variant="contained"
+        />
+      </div>
     </div>
   );
 }
