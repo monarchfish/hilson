@@ -4,16 +4,17 @@ import { useState } from 'react';
 import * as XLSX from 'xlsx';
 import { UploadFileButton } from '@hilson/ui';
 import { TextField } from '@mui/material';
+import { useNotificationStore } from '../../store/useNotificationStore';
 
 export function CsvToJson() {
   const [jsonData, setJsonData] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const { setNotification } = useNotificationStore((state) => state);
 
-  // 处理文件上传并转换为 JSON
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) {
-      setErrorMessage('請上傳文件');
+      setNotification(true, '請上傳文件', 'error');
       return;
     }
 
@@ -22,19 +23,21 @@ export function CsvToJson() {
     reader.onload = (event) => {
       const binaryString = event.target?.result;
       try {
-        // 解析 CSV 文件
         const workbook = XLSX.read(binaryString, { type: 'binary' });
         const sheetName = workbook.SheetNames[0]; // 选择第一个工作表
         const worksheet = workbook.Sheets[sheetName];
         const json = XLSX.utils.sheet_to_json(worksheet); // 将工作表转换为 JSON
 
-        setJsonData(JSON.stringify(json)); // 设置 JSON 数据
-        setErrorMessage(null); // 清空错误信息
+        setJsonData(JSON.stringify(json));
+        setErrorMessage(null);
+        setNotification(true, '上傳成功！', 'success');
+
       } catch (err) {
         if (err instanceof Error) {
-          setErrorMessage(err.message || '文件處理失敗');
+          setNotification(true, err.message || '文件處理失敗', 'error');
         } else {
           console.log('未知錯誤', err);
+          setNotification(true, '未知錯誤', 'error');
         }
       }
     };
@@ -45,7 +48,7 @@ export function CsvToJson() {
 
   const handleSetText = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setJsonData(e.target.value)
-  }
+  };
 
   return (
     <div className={styles.container}>

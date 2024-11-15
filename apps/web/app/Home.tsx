@@ -53,7 +53,7 @@ function ToolList() {
 
 export function Home() {
   return (
-    <div className={styles['container']}>
+    <div className={styles.container}>
       <PageTitle />
       <ToolList />
     </div>

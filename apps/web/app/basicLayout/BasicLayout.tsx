@@ -76,7 +76,7 @@ export function BasicLayout({
 }: basicLayoutType) {
 
   return (
-    <div className={styles['container']}>
+    <div className={styles.container}>
       <Header />
       {children}
       <Footer />
