@@ -3,6 +3,7 @@
   margin: 20px auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  text-align: center;
 
   .dataInput {
     width: 100%;
@@ -26,8 +27,9 @@
     margin: 10px 0;
   }
 
-  .buttonGroup {
-    display: flex;
-    gap: 8px;
+  :global {
+    .MuiFormControl-root {
+      width: 100%;
+    }
   }
 }

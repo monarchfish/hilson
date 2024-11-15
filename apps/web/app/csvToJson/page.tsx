@@ -1,8 +1,8 @@
 'use client';
-import { Login } from './Login';
+import { CsvToJson } from './CsvToJson';
 
 export default function Index() {
   return (
-    <Login />
+    <CsvToJson />
   );
 }
