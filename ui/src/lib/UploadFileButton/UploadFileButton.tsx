@@ -1,9 +1,8 @@
-'use client';
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-import styles from './UploadFileButton.module.scss';
-import clsx from 'clsx';
+'use client'
+import * as React from 'react'
+import { styled } from '@mui/material/styles'
+import Button from '@mui/material/Button'
+import * as styles from './UploadFileButton.styles'
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -15,12 +14,12 @@ const VisuallyHiddenInput = styled('input')({
   left: 0,
   whiteSpace: 'nowrap',
   width: 1,
-});
+})
 
 interface UploadFileButtonProps {
   text?: string,
   acceptType: string,
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   buttonSize?: 'small' | 'large'
 }
 
@@ -31,15 +30,13 @@ export function UploadFileButton({
   onChange
 }: UploadFileButtonProps) {
 
-  const btnStyles = clsx(styles.root, styles[buttonSize]);
-
   return (
     <Button
       component="label"
       role={undefined}
       variant="contained"
       tabIndex={-1}
-      className={btnStyles}
+      css={styles.root(buttonSize)}
       style={{
         backgroundColor: '#4caf50',
       }}
@@ -52,5 +49,5 @@ export function UploadFileButton({
         accept={acceptType}
       />
     </Button>
-  );
+  )
 }

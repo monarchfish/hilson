@@ -1,3 +1,3 @@
-export * from './BasicCheckbox/BasicCheckbox';
-export * from './BasicButton/BasicButton';
-export * from './UploadFileButton/UploadFileButton';
+export * from './lib/BasicCheckbox/BasicCheckbox';
+export * from './lib/BasicButton/BasicButton';
+export * from './lib/UploadFileButton/UploadFileButton';
