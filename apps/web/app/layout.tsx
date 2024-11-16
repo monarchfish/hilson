@@ -1,8 +1,8 @@
 'use client'
 import { BasicLayout } from './basicLayout/BasicLayout';
 import './global.scss';
-import Notification from '../components/notification/Notification';
-import { useNotificationStore } from '../store/useNotificationStore';
+import Alert from '../components/alert/Alert';
+import { useAlertStore } from '../store/useAlertStore';
 
 
 export default function RootLayout({
@@ -10,12 +10,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { open, setOpen, content, type } = useNotificationStore((state) => state)
+  const { alertInfo, setAlertInfo } = useAlertStore((state) => state)
 
   return (
     <html lang="en">
       <body>
-        <Notification open={open} setOpen={setOpen} content={content} type={type} />
+        <Alert alertInfo={alertInfo} setAlertInfo={setAlertInfo} />
         <BasicLayout>{children}</BasicLayout>
       </body>
     </html>

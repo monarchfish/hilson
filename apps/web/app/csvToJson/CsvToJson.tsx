@@ -4,17 +4,17 @@ import { useState } from 'react';
 import * as XLSX from 'xlsx';
 import { UploadFileButton } from '@hilson/ui';
 import { TextField } from '@mui/material';
-import { useNotificationStore } from '../../store/useNotificationStore';
+import { useAlertStore } from '../../store/useAlertStore';
 
 export function CsvToJson() {
   const [jsonData, setJsonData] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { setNotification } = useNotificationStore((state) => state);
+  const { setAlertInfo } = useAlertStore((state) => state);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) {
-      setNotification(true, '請上傳文件', 'error');
+      setAlertInfo({ visible: true, type: 'error', content: '請上傳文件' });
       return;
     }
 
@@ -24,30 +24,35 @@ export function CsvToJson() {
       const binaryString = event.target?.result;
       try {
         const workbook = XLSX.read(binaryString, { type: 'binary' });
-        const sheetName = workbook.SheetNames[0]; // 选择第一个工作表
+        const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
-        const json = XLSX.utils.sheet_to_json(worksheet); // 将工作表转换为 JSON
+        const json = XLSX.utils.sheet_to_json(worksheet);
 
         setJsonData(JSON.stringify(json));
         setErrorMessage(null);
-        setNotification(true, '上傳成功！', 'success');
+        setAlertInfo({ visible: true, type: 'success', content: '上傳成功！' });
 
       } catch (err) {
         if (err instanceof Error) {
-          setNotification(true, err.message || '文件處理失敗', 'error');
+          setAlertInfo({
+            visible: true,
+            type: 'error',
+            content: err.message || '文件處理失敗'
+          });
         } else {
           console.log('未知錯誤', err);
-          setNotification(true, '未知錯誤', 'error');
+          setAlertInfo({ visible: true, type: 'error', content: '未知錯誤' });
         }
       }
     };
 
-    // 读取 CSV 文件为 binary 字符串
     reader.readAsBinaryString(file);
   };
 
-  const handleSetText = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    setJsonData(e.target.value)
+  const handleSetText = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    setJsonData(e.target.value);
   };
 
   return (
