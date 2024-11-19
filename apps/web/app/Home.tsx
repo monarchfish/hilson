@@ -1,9 +1,7 @@
 'use client';
 import { Link } from '@mui/material';
 import styles from './Home.module.scss';
-import React from 'react';
-import SvgIcon from '../public/toolIcons/jsonToCsv.svg';
-import Image from 'next/image';
+import { ReactComponent as SvgIcon } from '../public/toolIcons/jsonToCsv.svg';
 
 function PageTitle() {
   return (
@@ -23,25 +21,25 @@ function ToolList() {
     {
       title: 'CSV To JSON',
       content: 'Convert CSV data to JSON format',
-      link: '/csvToJson',
+      link: '/csvToJson'
     },
     {
       title: 'JSON To CSV',
       content: 'Convert JSON data to CSV file',
-      link: '/jsonToCsv',
+      link: '/jsonToCsv'
     },
     {
       title: 'CSV To XLSX',
       content: 'Convert CSV data to XLSX file',
-      link: '/csvToXlsx',
-    },
+      link: '/csvToXlsx'
+    }
   ];
   return (
     <div className={styles.cardList}>
       {dataFormatList.map((item) => (
         <Link key={item.title} className={styles.card} href={item.link}>
           <div>
-            <Image src={SvgIcon} alt="" />
+            <SvgIcon />
           </div>
           <div className={styles.cardTitle}>{item.title}</div>
           <div className={styles.cardContent}>{item.content}</div>

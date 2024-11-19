@@ -4,36 +4,70 @@ import * as XLSX from 'xlsx';
 import styles from './CsvToXlsx.module.scss';
 import { BasicButton, UploadFileButton } from '@hilson/ui';
 import { TextField } from '@mui/material';
+import { useAlertStore } from '../../store/useAlertStore';
 
 function CsvToXlsx() {
   const [csvData, setCsvData] = useState<unknown[]>([]);
   const [fileName, setFileName] = useState('');
+  const { setAlertInfo } = useAlertStore((state) => state);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) return;
+    if (!file) {
+      setAlertInfo({ visible: true, type: 'error', content: '請上傳文件' });
+      return;
+    }
 
     const reader = new FileReader();
 
     reader.onload = (event) => {
       const binaryStr = event.target?.result as string;
-      const workbook = XLSX.read(binaryStr, { type: 'binary' });
-      const sheetName = workbook.SheetNames[0]; // 获取第一个工作表
-      const worksheet = workbook.Sheets[sheetName];
-      const json = XLSX.utils.sheet_to_json(worksheet); // CSV 转 JSON
-      setCsvData(json); // 设置 CSV 转换后的数据
-      setFileName('converted.xlsx');
+
+      try {
+        const workbook = XLSX.read(binaryStr, { type: 'binary' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const json = XLSX.utils.sheet_to_json(worksheet);
+
+        setCsvData(json);
+        setFileName('converted.xlsx');
+        setAlertInfo({ visible: true, type: 'success', content: '上傳成功！' });
+      } catch (err) {
+        if (err instanceof Error) {
+          setAlertInfo({
+            visible: true,
+            type: 'error',
+            content: err.message || '文件處理失敗'
+          });
+        } else {
+          console.log('未知錯誤', err);
+          setAlertInfo({ visible: true, type: 'error', content: '未知錯誤' });
+        }
+      }
     };
 
-    reader.readAsBinaryString(file); // 读取文件为二进制字符串
+    reader.readAsBinaryString(file);
   };
 
   const exportToXlsx = () => {
-    const worksheet = XLSX.utils.json_to_sheet(csvData); // 将 JSON 转为工作表
-    const workbook = XLSX.utils.book_new(); // 创建一个新工作簿
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1'); // 将工作表添加到工作簿中
+    try {
+      const worksheet = XLSX.utils.json_to_sheet(csvData);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
 
-    XLSX.writeFile(workbook, fileName);
+      XLSX.writeFile(workbook, fileName);
+    } catch (err) {
+      if (err instanceof Error) {
+        setAlertInfo({
+          visible: true,
+          type: 'error',
+          content: err.message || '匯出檔案失敗'
+        });
+      } else {
+        console.log('未知錯誤', err);
+        setAlertInfo({ visible: true, type: 'error', content: '未知錯誤' });
+      }
+    }
   };
 
   return (

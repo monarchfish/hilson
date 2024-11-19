@@ -21,7 +21,26 @@
     }
   }
 
+  .toolDropdown {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: #e5322d;
+
+      .icon {
+        fill: #e5322d;
+      }
+    }
+  }
+
   :global {
+    .MuiToolbar-root {
+      gap: 16px;
+      cursor: pointer;
+    }
+
     .MuiContainer-root {
       margin: 0;
     }
@@ -34,4 +53,70 @@
       }
     }
   }
+}
+
+.toolPopper {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: justify;
+  justify-content: left;
+  gap: 40px;
+  background: #fff;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 5px 45px hsla(0, 0%, 9%, 0.1);
+  box-shadow: 0 5px 45px hsla(0, 0%, 9%, 0.1);
+  width: 90%;
+  padding: 32px;
+  padding-bottom: 0;
+  margin-top: 24px !important;
+
+  .title {
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: #707078;
+    font-size: 14px;
+  }
+
+  .itemList {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    gap: 8px;
+    font-size: 12px;
+
+    .item {
+      color: #161616;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px;
+
+      .icon {
+        width: 20px;
+        height: 20px;
+        padding: 8px;
+      }
+
+      &:hover {
+        background: #f5f5fa;
+        color: #e5322d;
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+.customTooltip {
+  width: 90%;
+}
+
+.toolMenu {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-bottom: 0;
 }

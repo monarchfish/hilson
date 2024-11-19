@@ -5,7 +5,7 @@ import * as styles from './BasicButton.styles'
 export interface ButtonProps {
   text: string
   variant: 'text' | 'contained' | 'outlined'
-  onClick?: () => void
+  onClick?: (event?: React.MouseEvent<HTMLElement>) => void
   className?: string
   disabled?: boolean
 }
