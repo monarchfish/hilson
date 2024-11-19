@@ -17,6 +17,9 @@ importers:
       '@mui/material':
         specifier: ^6.1.4
         version: 6.1.4(@emotion/react@11.13.3(@types/react@18.3.1)(react@18.3.1))(@emotion/styled@11.13.0(@emotion/react@11.13.3(@types/react@18.3.1)(react@18.3.1))(@types/react@18.3.1)(react@18.3.1))(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@svgr/webpack':
+        specifier: ^8.1.0
+        version: 8.1.0(typescript@5.5.4)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -95,7 +98,7 @@ importers:
         version: 0.2.3
       '@storybook/nextjs':
         specifier: ^8.3.6
-        version: 8.3.6(@swc/core@1.5.29(@swc/helpers@0.5.13))(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(next@14.2.3(@babel/core@7.25.8)(@playwright/test@1.48.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.62.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.62.1)(storybook@8.3.6)(type-fest@2.19.0)(typescript@5.5.4)(webpack-dev-server@5.1.0(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)))(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))
+        version: 8.3.6(@swc/core@1.5.29(@swc/helpers@0.5.13))(@types/webpack@5.28.5(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(next@14.2.3(@babel/core@7.25.8)(@playwright/test@1.48.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.62.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.62.1)(storybook@8.3.6)(type-fest@2.19.0)(typescript@5.5.4)(webpack-dev-server@5.1.0(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)))(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))
       '@storybook/react':
         specifier: ^8.2.8
         version: 8.3.6(@storybook/test@8.3.6(storybook@8.3.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6)(typescript@5.5.4)
@@ -2794,6 +2797,9 @@ packages:
 
   '@types/wait-on@5.3.4':
     resolution: {integrity: sha512-EBsPjFMrFlMbbUFf9D1Fp+PAB2TwmUn7a3YtHyD9RLuTIk1jDd8SxXVAoez2Ciy+8Jsceo2MYEYZzJ/DvorOKw==}
+
+  '@types/webpack@5.28.5':
+    resolution: {integrity: sha512-wR87cgvxj3p6D0Crt1r5avwqffqPXUkNlnQ1mjU93G7gCuFjufZR4I6j8cz5g1F1tTYpfOOFvly+cmIQwL9wvw==}
 
   '@types/ws@8.5.12':
     resolution: {integrity: sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==}
@@ -10169,7 +10175,7 @@ snapshots:
 
   '@mui/utils@6.1.4(@types/react@18.3.1)(react@18.3.1)':
     dependencies:
-      '@babel/runtime': 7.25.7
+      '@babel/runtime': 7.26.0
       '@mui/types': 7.2.18(@types/react@18.3.1)
       '@types/prop-types': 15.7.13
       clsx: 2.1.1
@@ -11057,7 +11063,7 @@ snapshots:
     dependencies:
       playwright: 1.48.1
 
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.15(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-dev-server@5.1.0(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)))(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))':
+  '@pmmmwh/react-refresh-webpack-plugin@0.5.15(@types/webpack@5.28.5(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-dev-server@5.1.0(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)))(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))':
     dependencies:
       ansi-html: 0.0.9
       core-js-pure: 3.38.1
@@ -11069,6 +11075,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)
     optionalDependencies:
+      '@types/webpack': 5.28.5(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)
       type-fest: 2.19.0
       webpack-dev-server: 5.1.0(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))
       webpack-hot-middleware: 2.26.1
@@ -11443,7 +11450,7 @@ snapshots:
     dependencies:
       storybook: 8.3.6
 
-  '@storybook/nextjs@8.3.6(@swc/core@1.5.29(@swc/helpers@0.5.13))(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(next@14.2.3(@babel/core@7.25.8)(@playwright/test@1.48.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.62.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.62.1)(storybook@8.3.6)(type-fest@2.19.0)(typescript@5.5.4)(webpack-dev-server@5.1.0(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)))(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))':
+  '@storybook/nextjs@8.3.6(@swc/core@1.5.29(@swc/helpers@0.5.13))(@types/webpack@5.28.5(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(next@14.2.3(@babel/core@7.25.8)(@playwright/test@1.48.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.62.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.62.1)(storybook@8.3.6)(type-fest@2.19.0)(typescript@5.5.4)(webpack-dev-server@5.1.0(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)))(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))':
     dependencies:
       '@babel/core': 7.25.8
       '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.25.8)
@@ -11458,7 +11465,7 @@ snapshots:
       '@babel/preset-react': 7.25.7(@babel/core@7.25.8)
       '@babel/preset-typescript': 7.25.7(@babel/core@7.25.8)
       '@babel/runtime': 7.25.7
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.15(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-dev-server@5.1.0(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)))(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.15(@types/webpack@5.28.5(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-dev-server@5.1.0(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)))(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5))
       '@storybook/builder-webpack5': 8.3.6(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)(storybook@8.3.6)(typescript@5.5.4)
       '@storybook/preset-react-webpack': 8.3.6(@storybook/test@8.3.6(storybook@8.3.6))(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6)(typescript@5.5.4)
       '@storybook/react': 8.3.6(@storybook/test@8.3.6(storybook@8.3.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6)(typescript@5.5.4)
@@ -11868,7 +11875,7 @@ snapshots:
   '@testing-library/dom@10.4.0':
     dependencies:
       '@babel/code-frame': 7.25.7
-      '@babel/runtime': 7.25.7
+      '@babel/runtime': 7.26.0
       '@types/aria-query': 5.0.4
       aria-query: 5.3.0
       chalk: 4.1.2
@@ -11879,7 +11886,7 @@ snapshots:
   '@testing-library/dom@9.3.4':
     dependencies:
       '@babel/code-frame': 7.25.7
-      '@babel/runtime': 7.25.7
+      '@babel/runtime': 7.26.0
       '@types/aria-query': 5.0.4
       aria-query: 5.1.3
       chalk: 4.1.2
@@ -12145,6 +12152,18 @@ snapshots:
   '@types/wait-on@5.3.4':
     dependencies:
       '@types/node': 18.16.9
+
+  '@types/webpack@5.28.5(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)':
+    dependencies:
+      '@types/node': 18.16.9
+      tapable: 2.2.1
+      webpack: 5.95.0(@swc/core@1.5.29(@swc/helpers@0.5.13))(esbuild@0.21.5)
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - uglify-js
+      - webpack-cli
+    optional: true
 
   '@types/ws@8.5.12':
     dependencies:
@@ -13717,7 +13736,7 @@ snapshots:
 
   dom-helpers@5.2.1:
     dependencies:
-      '@babel/runtime': 7.25.7
+      '@babel/runtime': 7.26.0
       csstype: 3.1.3
 
   dom-serializer@0.2.2:
@@ -16965,7 +16984,7 @@ snapshots:
 
   polished@4.3.1:
     dependencies:
-      '@babel/runtime': 7.25.7
+      '@babel/runtime': 7.26.0
 
   portfinder@1.0.32:
     dependencies:
@@ -17354,7 +17373,7 @@ snapshots:
 
   react-transition-group@4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@babel/runtime': 7.25.7
+      '@babel/runtime': 7.26.0
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
