@@ -1,8 +1,10 @@
 'use client'
+
 import * as React from 'react'
-import { styled } from '@mui/material/styles'
 import Button from '@mui/material/Button'
+
 import * as styles from './UploadFileButton.styles'
+import { styled } from '@mui/material/styles'
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -13,12 +15,12 @@ const VisuallyHiddenInput = styled('input')({
   bottom: 0,
   left: 0,
   whiteSpace: 'nowrap',
-  width: 1,
+  width: 1
 })
 
 interface UploadFileButtonProps {
-  text?: string,
-  acceptType: string,
+  text?: string
+  acceptType: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   buttonSize?: 'small' | 'large'
 }
@@ -29,24 +31,23 @@ export function UploadFileButton({
   buttonSize = 'large',
   onChange
 }: UploadFileButtonProps) {
-
   return (
     <Button
       component="label"
-      role={undefined}
-      variant="contained"
-      tabIndex={-1}
       css={styles.root(buttonSize)}
+      role={undefined}
       style={{
-        backgroundColor: '#4caf50',
+        backgroundColor: '#4caf50'
       }}
+      tabIndex={-1}
+      variant="contained"
     >
       {text}
       <VisuallyHiddenInput
+        accept={acceptType}
+        multiple
         type="file"
         onChange={onChange}
-        multiple
-        accept={acceptType}
       />
     </Button>
   )

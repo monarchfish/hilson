@@ -1,31 +1,35 @@
-'use client';
-import styles from './BasicLayout.module.scss';
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Container from '@mui/material/Container';
-import Link from 'next/link';
-import { Popper } from '@mui/material';
-import { ReactComponent as BrandIcon } from './icon.svg';
-import { ReactComponent as SvgIcon } from '../../public/toolIcons/jsonToCsv.svg';
-import { ReactComponent as ArrowDropdown } from '../../public/arrowDropdown.svg';
-import { useRef, useState } from 'react';
+'use client'
+
+import * as React from 'react'
+import { useRef, useState } from 'react'
+import { Popper } from '@mui/material'
+import AppBar from '@mui/material/AppBar'
+import Container from '@mui/material/Container'
+import Toolbar from '@mui/material/Toolbar'
+import Link from 'next/link'
+
+import { ReactComponent as ArrowDropdown } from '../../public/arrowDropdown.svg'
+import { ReactComponent as SvgIcon } from '../../public/toolIcons/jsonToCsv.svg'
+import styles from './BasicLayout.module.scss'
+import { ReactComponent as BrandIcon } from './icon.svg'
 
 function Header() {
-  const [open, setOpen] = useState(false);
-  const anchorRef = useRef<HTMLDivElement | null>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [open, setOpen] = useState(false)
+
+  const anchorRef = useRef<HTMLDivElement | null>(null)
+
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const handleMouseOver = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
-      setOpen(false);
-      timeoutRef.current = null;
-    }, 150);
-  };
+      setOpen(false)
+      timeoutRef.current = null
+    }, 150)
+  }
 
   const pages = [
     {
@@ -58,10 +62,10 @@ function Header() {
         }
       ]
     }
-  ];
+  ]
 
   return (
-    <AppBar position="static" color="transparent" style={{ margin: 0 }}>
+    <AppBar color="transparent" position="static" style={{ margin: 0 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link href="/">
@@ -69,17 +73,14 @@ function Header() {
           </Link>
           <div
             ref={anchorRef}
-            onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
+            onMouseOver={handleMouseOver}
           >
             <div className={styles.toolDropdown}>
               All Tools
               <ArrowDropdown className={styles.icon} />
             </div>
-            <Popper
-              open={open}
-              anchorEl={anchorRef.current}
-            >
+            <Popper anchorEl={anchorRef.current} open={open}>
               <div className={styles.toolPopper}>
                 {pages.map((page) => (
                   <div key={page.title} className={styles.toolType}>
@@ -88,8 +89,8 @@ function Header() {
                       {page.items.map((item, key) => (
                         <Link
                           key={key}
-                          href={item.link}
                           className={styles.item}
+                          href={item.link}
                         >
                           <SvgIcon className={styles.icon} />
                           {item.label}
@@ -104,7 +105,7 @@ function Header() {
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  )
 }
 
 function Footer() {
@@ -115,11 +116,11 @@ function Footer() {
         © iLoveDataFormatter {new Date().getFullYear()} ® - Your Data Editor
       </p>
     </div>
-  );
+  )
 }
 
 interface basicLayoutType {
-  children?: React.ReactNode;
+  children?: React.ReactNode
 }
 
 export function BasicLayout({ children }: basicLayoutType) {
@@ -129,7 +130,7 @@ export function BasicLayout({ children }: basicLayoutType) {
       {children}
       <Footer />
     </div>
-  );
+  )
 }
 
-export default BasicLayout;
+export default BasicLayout

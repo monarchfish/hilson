@@ -1,8 +1,7 @@
-'use client';
+'use client'
+
 import { JsonToCsv } from './JsonToCsv'
 
 export default function Index() {
-  return (
-    <JsonToCsv />
-  );
+  return <JsonToCsv />
 }

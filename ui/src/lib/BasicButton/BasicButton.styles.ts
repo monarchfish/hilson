@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/react'
 
 export const root = css`
   background-color: #4caf50;
@@ -7,4 +7,4 @@ export const root = css`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-`;
+`

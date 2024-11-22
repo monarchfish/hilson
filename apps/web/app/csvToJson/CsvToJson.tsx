@@ -1,59 +1,68 @@
-'use client';
-import styles from './CsvToJson.module.scss';
-import { useState } from 'react';
-import * as XLSX from 'xlsx';
-import { UploadFileButton } from '@hilson/ui';
-import { TextField } from '@mui/material';
-import { useAlertStore } from '../../store/useAlertStore';
+'use client'
+
+import { useState } from 'react'
+import { UploadFileButton } from '@hilson/ui'
+import { TextField } from '@mui/material'
+import * as XLSX from 'xlsx'
+
+import { useAlertStore } from '../../store/useAlertStore'
+import styles from './CsvToJson.module.scss'
 
 export function CsvToJson() {
-  const [jsonData, setJsonData] = useState('');
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { setAlertInfo } = useAlertStore((state) => state);
+  const [jsonData, setJsonData] = useState('')
+
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const { setAlertInfo } = useAlertStore((state) => state)
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+    const file = e.target.files?.[0]
+
     if (!file) {
-      setAlertInfo({ visible: true, type: 'error', content: '請上傳文件' });
-      return;
+      setAlertInfo({ visible: true, type: 'error', content: '請上傳文件' })
+
+      return
     }
 
-    const reader = new FileReader();
+    const reader = new FileReader()
 
     reader.onload = (event) => {
-      const binaryString = event.target?.result;
+      const binaryString = event.target?.result
+
       try {
-        const workbook = XLSX.read(binaryString, { type: 'binary' });
-        const sheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[sheetName];
-        const json = XLSX.utils.sheet_to_json(worksheet);
+        const workbook = XLSX.read(binaryString, { type: 'binary' })
 
-        setJsonData(JSON.stringify(json));
-        setErrorMessage(null);
-        setAlertInfo({ visible: true, type: 'success', content: '上傳成功！' });
+        const sheetName = workbook.SheetNames[0]
 
+        const worksheet = workbook.Sheets[sheetName]
+
+        const json = XLSX.utils.sheet_to_json(worksheet)
+
+        setJsonData(JSON.stringify(json))
+        setErrorMessage(null)
+        setAlertInfo({ visible: true, type: 'success', content: '上傳成功！' })
       } catch (err) {
         if (err instanceof Error) {
           setAlertInfo({
             visible: true,
             type: 'error',
             content: err.message || '文件處理失敗'
-          });
+          })
         } else {
-          console.log('未知錯誤', err);
-          setAlertInfo({ visible: true, type: 'error', content: '未知錯誤' });
+          console.log('未知錯誤', err)
+          setAlertInfo({ visible: true, type: 'error', content: '未知錯誤' })
         }
       }
-    };
+    }
 
-    reader.readAsBinaryString(file);
-  };
+    reader.readAsBinaryString(file)
+  }
 
   const handleSetText = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
-    setJsonData(e.target.value);
-  };
+    setJsonData(e.target.value)
+  }
 
   return (
     <div className={styles.container}>
@@ -70,7 +79,7 @@ export function CsvToJson() {
         onChange={(e) => handleSetText(e)}
       />
     </div>
-  );
+  )
 }
 
-export default CsvToJson;
+export default CsvToJson

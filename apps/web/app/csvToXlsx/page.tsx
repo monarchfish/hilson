@@ -1,8 +1,7 @@
-'use client';
-import CsvToXlsx from './CsvToXlsx';
+'use client'
+
+import CsvToXlsx from './CsvToXlsx'
 
 export default function Index() {
-  return (
-    <CsvToXlsx />
-  );
+  return <CsvToXlsx />
 }

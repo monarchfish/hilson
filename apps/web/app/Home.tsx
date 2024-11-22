@@ -1,7 +1,9 @@
-'use client';
-import { Link } from '@mui/material';
-import styles from './Home.module.scss';
-import { ReactComponent as SvgIcon } from '../public/toolIcons/jsonToCsv.svg';
+'use client'
+
+import { Link } from '@mui/material'
+
+import { ReactComponent as SvgIcon } from '../public/toolIcons/jsonToCsv.svg'
+import styles from './Home.module.scss'
 
 function PageTitle() {
   return (
@@ -13,7 +15,7 @@ function PageTitle() {
         watermark PDFs with just a few clicks.
       </p>
     </div>
-  );
+  )
 }
 
 function ToolList() {
@@ -33,7 +35,8 @@ function ToolList() {
       content: 'Convert CSV data to XLSX file',
       link: '/csvToXlsx'
     }
-  ];
+  ]
+
   return (
     <div className={styles.cardList}>
       {dataFormatList.map((item) => (
@@ -46,7 +49,7 @@ function ToolList() {
         </Link>
       ))}
     </div>
-  );
+  )
 }
 
 export function Home() {
@@ -55,7 +58,7 @@ export function Home() {
       <PageTitle />
       <ToolList />
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

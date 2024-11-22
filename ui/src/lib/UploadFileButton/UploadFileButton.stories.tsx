@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { UploadFileButton } from './UploadFileButton';
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { expect } from '@storybook/jest'
+import type { Meta, StoryObj } from '@storybook/react'
+import { within } from '@storybook/testing-library'
+
+import { UploadFileButton } from './UploadFileButton'
 
 const meta: Meta<typeof UploadFileButton> = {
   component: UploadFileButton,
@@ -11,22 +12,24 @@ const meta: Meta<typeof UploadFileButton> = {
       <Story />
     </div>
   )
-};
-export default meta;
-type Story = StoryObj<typeof UploadFileButton>;
+}
+
+export default meta
+type Story = StoryObj<typeof UploadFileButton>
 
 export const Primary = {
   args: {
     text: 'Primary'
-  },
-};
+  }
+}
 
 export const Heading: Story = {
   args: {
     text: 'Heading'
   },
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    expect(canvas.getByText(/Welcome to MyButton!/gi)).toBeTruthy();
-  },
-};
+    const canvas = within(canvasElement)
+
+    expect(canvas.getByText(/Welcome to MyButton!/gi)).toBeTruthy()
+  }
+}

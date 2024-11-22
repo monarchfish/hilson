@@ -1,14 +1,15 @@
 'use client'
-import { BasicLayout } from './basicLayout/BasicLayout';
-import './global.scss';
-import Alert from '../components/alert/Alert';
-import { useAlertStore } from '../store/useAlertStore';
 
+import Alert from '../components/alert/Alert'
+import { useAlertStore } from '../store/useAlertStore'
+import { BasicLayout } from './basicLayout/BasicLayout'
+
+import './global.scss'
 
 export default function RootLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   const { alertInfo, setAlertInfo } = useAlertStore((state) => state)
 
@@ -19,5 +20,5 @@ export default function RootLayout({
         <BasicLayout>{children}</BasicLayout>
       </body>
     </html>
-  );
+  )
 }
