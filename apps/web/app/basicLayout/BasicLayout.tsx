@@ -42,6 +42,10 @@ function Header() {
         {
           label: 'CSV To JSON',
           link: '/csvToJson'
+        },
+        {
+          label: 'XML To JSON',
+          link: '/xmlToJson'
         }
       ]
     },
@@ -59,6 +63,15 @@ function Header() {
         {
           label: 'CSV To XLSX',
           link: '/csvToXlsx'
+        }
+      ]
+    },
+    {
+      title: 'XML',
+      items: [
+        {
+          label: 'XML To JSON',
+          link: '/xmlToJson'
         }
       ]
     }
@@ -127,7 +140,7 @@ export function BasicLayout({ children }: basicLayoutType) {
   return (
     <div className={styles.container}>
       <Header />
-      {children}
+      <div className={styles.mainContent}>{children}</div>
       <Footer />
     </div>
   )

@@ -2,7 +2,7 @@
 
 import Button from '@mui/material/Button'
 
-import * as styles from './BasicButton.styles'
+import styles from './BasicButton.module.scss'
 
 export interface ButtonProps {
   text: string
@@ -10,6 +10,7 @@ export interface ButtonProps {
   onClick?: (event?: React.MouseEvent<HTMLElement>) => void
   className?: string
   disabled?: boolean
+  color: string
 }
 
 export function BasicButton({
@@ -17,11 +18,13 @@ export function BasicButton({
   variant,
   onClick,
   className,
-  disabled = false
+  disabled = false,
+  color = 'primary'
 }: ButtonProps) {
   return (
     <Button
       className={className}
+      color={color}
       css={styles.root}
       disabled={disabled}
       variant={variant}

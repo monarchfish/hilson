@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+
+  .mainContent {
+    text-align: center;
+    display: flex;
+    gap: 16px;
+    height: 100%;
+
+    .dataInput {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .transferBtn {
+      height: 40px;
+      margin: auto;
+    }
+  }
+
+  .btnGroup {
+    display: flex;
+    justify-content: end;
+  }
+}

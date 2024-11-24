@@ -27,7 +27,7 @@ function Alert({ alertInfo, setAlertInfo }: AlertProps) {
   useEffect(() => {
     if (alertInfo.visible) {
       const timer = setTimeout(() => {
-        setAlertInfo({ visible: false, type: 'success', content: '' })
+        setAlertInfo({ ...alertInfo, visible: false })
       }, 3000)
 
       return () => clearTimeout(timer)
@@ -37,9 +37,8 @@ function Alert({ alertInfo, setAlertInfo }: AlertProps) {
   return (
     <div className={`${styles.container}`}>
       <BaseAlert
-        className={`${styles.alert} ${
-          alertInfo.visible ? styles.active : styles.hide
-        }`}
+        className={`${styles.alert} ${alertInfo.visible ? styles.active : styles.hide
+          }`}
         severity={alertInfo.type}
         variant="filled"
       >

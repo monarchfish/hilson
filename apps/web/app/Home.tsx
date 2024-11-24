@@ -34,6 +34,11 @@ function ToolList() {
       title: 'CSV To XLSX',
       content: 'Convert CSV data to XLSX file',
       link: '/csvToXlsx'
+    },
+    {
+      title: 'XML To JSON',
+      content: 'Convert XML data to JSON format',
+      link: '/xmlToJson'
     }
   ]
 
