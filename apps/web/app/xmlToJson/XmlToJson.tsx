@@ -67,7 +67,7 @@ export function XmlToJson() {
         />
         <textarea
           className={styles.dataInput}
-          placeholder="請輸入XML資料"
+          placeholder="請輸入JSON資料"
           value={jsonData}
           onChange={(e) => setJsonData(e.target.value)}
         />

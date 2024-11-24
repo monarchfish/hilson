@@ -39,6 +39,11 @@ function ToolList() {
       title: 'XML To JSON',
       content: 'Convert XML data to JSON format',
       link: '/xmlToJson'
+    },
+    {
+      title: 'JSON To XML',
+      content: 'Convert JSON data to XML format',
+      link: '/jsonToXml'
     }
   ]
 

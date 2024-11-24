@@ -46,6 +46,10 @@ function Header() {
         {
           label: 'XML To JSON',
           link: '/xmlToJson'
+        },
+        {
+          label: 'JSON To XML',
+          link: '/jsonToXml'
         }
       ]
     },
@@ -72,6 +76,10 @@ function Header() {
         {
           label: 'XML To JSON',
           link: '/xmlToJson'
+        },
+        {
+          label: 'JSON To XML',
+          link: '/jsonToXml'
         }
       ]
     }
