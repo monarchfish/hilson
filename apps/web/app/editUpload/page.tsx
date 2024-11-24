@@ -1,5 +1,3 @@
-'use client'
-
 import { EditUpload } from './EditUpload'
 
 export default function Index() {
