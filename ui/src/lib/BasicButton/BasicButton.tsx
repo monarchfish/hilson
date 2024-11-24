@@ -11,7 +11,15 @@ export interface ButtonProps {
   onClick?: (event?: React.MouseEvent<HTMLElement>) => void
   className?: string
   disabled?: boolean
-  color: string
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'error'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'inherit'
+    | undefined
 }
 
 export function BasicButton({

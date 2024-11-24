@@ -37,8 +37,9 @@ function Alert({ alertInfo, setAlertInfo }: AlertProps) {
   return (
     <div className={`${styles.container}`}>
       <BaseAlert
-        className={`${styles.alert} ${alertInfo.visible ? styles.active : styles.hide
-          }`}
+        className={`${styles.alert} ${
+          alertInfo.visible ? styles.active : styles.hide
+        }`}
         severity={alertInfo.type}
         variant="filled"
       >
