@@ -6,6 +6,7 @@ import { composePlugins, withNx } from '@nx/next'
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
+  output: 'standalone',
   compiler: {
     emotion: true
   },
