@@ -1,13 +1,25 @@
+/** @jsxImportSource @emotion/react */
 'use client'
+
 import Button from '@mui/material/Button'
-import * as styles from './BasicButton.styles'
+
+import styles from './BasicButton.module.scss'
 
 export interface ButtonProps {
   text: string
   variant: 'text' | 'contained' | 'outlined'
-  onClick?: () => void
+  onClick?: (event?: React.MouseEvent<HTMLElement>) => void
   className?: string
   disabled?: boolean
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'error'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'inherit'
+    | undefined
 }
 
 export function BasicButton({
@@ -16,15 +28,16 @@ export function BasicButton({
   onClick,
   className,
   disabled = false,
+  color = 'primary'
 }: ButtonProps) {
-
   return (
     <Button
-      variant={variant}
-      onClick={onClick}
       className={className}
+      color={color}
       css={styles.root}
       disabled={disabled}
+      variant={variant}
+      onClick={onClick}
     >
       {text}
     </Button>

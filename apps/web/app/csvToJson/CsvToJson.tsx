@@ -1,49 +1,66 @@
-'use client';
-import styles from './CsvToJson.module.scss';
-import { useState } from 'react';
-import * as XLSX from 'xlsx';
-import { UploadFileButton } from '@hilson/ui';
-import { TextField } from '@mui/material';
+'use client'
+
+import { useState } from 'react'
+import { UploadFileButton } from '@hilson/ui'
+import { TextField } from '@mui/material'
+import * as XLSX from 'xlsx'
+
+import { useAlertStore } from '../../store/useAlertStore'
+import styles from './CsvToJson.module.scss'
 
 export function CsvToJson() {
-  const [jsonData, setJsonData] = useState('');
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [jsonData, setJsonData] = useState('')
 
-  // 处理文件上传并转换为 JSON
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const { setAlertInfo } = useAlertStore((state) => state)
+
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+    const file = e.target.files?.[0]
+
     if (!file) {
-      setErrorMessage('請上傳文件');
-      return;
+      setAlertInfo({ visible: true, type: 'error', content: '請上傳文件' })
+
+      return
     }
 
-    const reader = new FileReader();
+    const reader = new FileReader()
 
     reader.onload = (event) => {
-      const binaryString = event.target?.result;
-      try {
-        // 解析 CSV 文件
-        const workbook = XLSX.read(binaryString, { type: 'binary' });
-        const sheetName = workbook.SheetNames[0]; // 选择第一个工作表
-        const worksheet = workbook.Sheets[sheetName];
-        const json = XLSX.utils.sheet_to_json(worksheet); // 将工作表转换为 JSON
+      const binaryString = event.target?.result
 
-        setJsonData(JSON.stringify(json)); // 设置 JSON 数据
-        setErrorMessage(null); // 清空错误信息
+      try {
+        const workbook = XLSX.read(binaryString, { type: 'binary' })
+
+        const sheetName = workbook.SheetNames[0]
+
+        const worksheet = workbook.Sheets[sheetName]
+
+        const json = XLSX.utils.sheet_to_json(worksheet)
+
+        setJsonData(JSON.stringify(json))
+        setErrorMessage(null)
+        setAlertInfo({ visible: true, type: 'success', content: '上傳成功！' })
       } catch (err) {
         if (err instanceof Error) {
-          setErrorMessage(err.message || '文件處理失敗');
+          setAlertInfo({
+            visible: true,
+            type: 'error',
+            content: err.message || '文件處理失敗'
+          })
         } else {
-          console.log('未知錯誤', err);
+          console.log('未知錯誤', err)
+          setAlertInfo({ visible: true, type: 'error', content: '未知錯誤' })
         }
       }
-    };
+    }
 
-    // 读取 CSV 文件为 binary 字符串
-    reader.readAsBinaryString(file);
-  };
+    reader.readAsBinaryString(file)
+  }
 
-  const handleSetText = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const handleSetText = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     setJsonData(e.target.value)
   }
 
@@ -62,7 +79,7 @@ export function CsvToJson() {
         onChange={(e) => handleSetText(e)}
       />
     </div>
-  );
+  )
 }
 
-export default CsvToJson;
+export default CsvToJson

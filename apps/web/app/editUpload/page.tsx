@@ -1,8 +1,5 @@
-'use client';
-import { EditUpload } from './EditUpload';
+import { EditUpload } from './EditUpload'
 
 export default function Index() {
-  return (
-    <EditUpload />
-  );
+  return <EditUpload />
 }
