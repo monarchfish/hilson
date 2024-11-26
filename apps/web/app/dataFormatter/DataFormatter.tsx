@@ -3,7 +3,7 @@
 import { Link } from '@mui/material'
 
 import { ReactComponent as SvgIcon } from '../../public/toolIcons/jsonToCsv.svg'
-import styles from './PDF.module.scss'
+import styles from './DataFormatter.module.scss'
 
 function PageTitle() {
   return (
@@ -23,27 +23,27 @@ function ToolList() {
     {
       title: 'CSV To JSON',
       content: 'Convert CSV data to JSON format',
-      link: 'pdf/csvToJson'
+      link: 'dataFormatter/csvToJson'
     },
     {
       title: 'JSON To CSV',
       content: 'Convert JSON data to CSV file',
-      link: 'pdf/jsonToCsv'
+      link: 'dataFormatter/jsonToCsv'
     },
     {
       title: 'CSV To XLSX',
       content: 'Convert CSV data to XLSX file',
-      link: 'pdf/csvToXlsx'
+      link: 'dataFormatter/csvToXlsx'
     },
     {
       title: 'XML To JSON',
       content: 'Convert XML data to JSON format',
-      link: 'pdf/xmlToJson'
+      link: 'dataFormatter/xmlToJson'
     },
     {
       title: 'JSON To XML',
       content: 'Convert JSON data to XML format',
-      link: 'pdf/jsonToXml'
+      link: 'dataFormatter/jsonToXml'
     }
   ]
 
@@ -62,7 +62,7 @@ function ToolList() {
   )
 }
 
-function PDF() {
+function DataFormatter() {
   return (
     <div className={styles.container}>
       <PageTitle />
@@ -71,4 +71,4 @@ function PDF() {
   )
 }
 
-export default PDF
+export default DataFormatter
