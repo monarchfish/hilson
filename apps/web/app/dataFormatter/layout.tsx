@@ -2,7 +2,7 @@
 
 import Alert from '../../components/alert/Alert'
 import { useAlertStore } from '../../store/useAlertStore'
-import PDFLayout from './PDFLayout/PDFLayout'
+import DataFormatterLayout from './DataFormatterLayout/DataFormatterLayout'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { alertInfo, setAlertInfo } = useAlertStore((state) => state)
@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Alert alertInfo={alertInfo} setAlertInfo={setAlertInfo} />
-      <PDFLayout>{children}</PDFLayout>
+      <DataFormatterLayout>{children}</DataFormatterLayout>
     </>
   )
 }

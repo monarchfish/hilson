@@ -10,8 +10,8 @@ import Link from 'next/link'
 
 import { ReactComponent as ArrowDropdown } from '../../../public/arrowDropdown.svg'
 import { ReactComponent as SvgIcon } from '../../../public/toolIcons/jsonToCsv.svg'
+import styles from './DataFormatterLayout.module.scss'
 import { ReactComponent as BrandIcon } from './icon.svg'
-import styles from './PDFLayout.module.scss'
 
 function Header() {
   const [open, setOpen] = useState(false)
@@ -37,19 +37,19 @@ function Header() {
       items: [
         {
           label: 'JSON To CSV',
-          link: '/pdf/jsonToCsv'
+          link: '/dataFormatter/jsonToCsv'
         },
         {
           label: 'CSV To JSON',
-          link: '/pdf/csvToJson'
+          link: '/dataFormatter/csvToJson'
         },
         {
           label: 'XML To JSON',
-          link: '/pdf/xmlToJson'
+          link: '/dataFormatter/xmlToJson'
         },
         {
           label: 'JSON To XML',
-          link: '/pdf/jsonToXml'
+          link: '/dataFormatter/jsonToXml'
         }
       ]
     },
@@ -58,15 +58,15 @@ function Header() {
       items: [
         {
           label: 'JSON To CSV',
-          link: '/pdf/jsonToCsv'
+          link: '/dataFormatter/jsonToCsv'
         },
         {
           label: 'CSV To JSON',
-          link: '/pdf/csvToJson'
+          link: '/dataFormatter/csvToJson'
         },
         {
           label: 'CSV To XLSX',
-          link: '/pdf/csvToXlsx'
+          link: '/dataFormatter/csvToXlsx'
         }
       ]
     },
@@ -75,11 +75,11 @@ function Header() {
       items: [
         {
           label: 'XML To JSON',
-          link: '/pdf/xmlToJson'
+          link: '/dataFormatter/xmlToJson'
         },
         {
           label: 'JSON To XML',
-          link: '/pdf/jsonToXml'
+          link: '/dataFormatter/jsonToXml'
         }
       ]
     }
@@ -89,7 +89,7 @@ function Header() {
     <AppBar color="transparent" position="static" style={{ margin: 0 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Link href="/pdf">
+          <Link href="/dataFormatter">
             <BrandIcon className={styles.brandImg} />
           </Link>
           <div
@@ -140,11 +140,11 @@ function Footer() {
   )
 }
 
-interface PDFLayoutType {
+interface DataFormatterLayoutType {
   children?: React.ReactNode
 }
 
-export function PDFLayout({ children }: PDFLayoutType) {
+export function DataFormatterLayout({ children }: DataFormatterLayoutType) {
   return (
     <div className={styles.container}>
       <Header />
@@ -154,4 +154,4 @@ export function PDFLayout({ children }: PDFLayoutType) {
   )
 }
 
-export default PDFLayout
+export default DataFormatterLayout
