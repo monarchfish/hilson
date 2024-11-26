@@ -5,7 +5,7 @@ import { UploadFileButton } from '@hilson/ui'
 import { TextField } from '@mui/material'
 import * as XLSX from 'xlsx'
 
-import { useAlertStore } from '../../store/useAlertStore'
+import { useAlertStore } from '../../../store/useAlertStore'
 import styles from './CsvToJson.module.scss'
 
 export function CsvToJson() {

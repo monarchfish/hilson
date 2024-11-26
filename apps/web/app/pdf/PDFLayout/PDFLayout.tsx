@@ -8,10 +8,10 @@ import Container from '@mui/material/Container'
 import Toolbar from '@mui/material/Toolbar'
 import Link from 'next/link'
 
-import { ReactComponent as ArrowDropdown } from '../../public/arrowDropdown.svg'
-import { ReactComponent as SvgIcon } from '../../public/toolIcons/jsonToCsv.svg'
-import styles from './BasicLayout.module.scss'
+import { ReactComponent as ArrowDropdown } from '../../../public/arrowDropdown.svg'
+import { ReactComponent as SvgIcon } from '../../../public/toolIcons/jsonToCsv.svg'
 import { ReactComponent as BrandIcon } from './icon.svg'
+import styles from './PDFLayout.module.scss'
 
 function Header() {
   const [open, setOpen] = useState(false)
@@ -37,19 +37,19 @@ function Header() {
       items: [
         {
           label: 'JSON To CSV',
-          link: '/jsonToCsv'
+          link: '/pdf/jsonToCsv'
         },
         {
           label: 'CSV To JSON',
-          link: '/csvToJson'
+          link: '/pdf/csvToJson'
         },
         {
           label: 'XML To JSON',
-          link: '/xmlToJson'
+          link: '/pdf/xmlToJson'
         },
         {
           label: 'JSON To XML',
-          link: '/jsonToXml'
+          link: '/pdf/jsonToXml'
         }
       ]
     },
@@ -58,15 +58,15 @@ function Header() {
       items: [
         {
           label: 'JSON To CSV',
-          link: '/jsonToCsv'
+          link: '/pdf/jsonToCsv'
         },
         {
           label: 'CSV To JSON',
-          link: '/csvToJson'
+          link: '/pdf/csvToJson'
         },
         {
           label: 'CSV To XLSX',
-          link: '/csvToXlsx'
+          link: '/pdf/csvToXlsx'
         }
       ]
     },
@@ -75,11 +75,11 @@ function Header() {
       items: [
         {
           label: 'XML To JSON',
-          link: '/xmlToJson'
+          link: '/pdf/xmlToJson'
         },
         {
           label: 'JSON To XML',
-          link: '/jsonToXml'
+          link: '/pdf/jsonToXml'
         }
       ]
     }
@@ -89,7 +89,7 @@ function Header() {
     <AppBar color="transparent" position="static" style={{ margin: 0 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Link href="/">
+          <Link href="/pdf">
             <BrandIcon className={styles.brandImg} />
           </Link>
           <div
@@ -140,11 +140,11 @@ function Footer() {
   )
 }
 
-interface basicLayoutType {
+interface PDFLayoutType {
   children?: React.ReactNode
 }
 
-export function BasicLayout({ children }: basicLayoutType) {
+export function PDFLayout({ children }: PDFLayoutType) {
   return (
     <div className={styles.container}>
       <Header />
@@ -154,4 +154,4 @@ export function BasicLayout({ children }: basicLayoutType) {
   )
 }
 
-export default BasicLayout
+export default PDFLayout

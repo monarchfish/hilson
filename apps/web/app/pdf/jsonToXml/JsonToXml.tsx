@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { BasicButton } from '@hilson/ui'
 import xml2js from 'xml2js'
 
-import { useAlertStore } from '../../store/useAlertStore'
+import { useAlertStore } from '../../../store/useAlertStore'
 import styles from './JsonToXml.module.scss'
 
 export function JsonToXml() {

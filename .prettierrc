@@ -5,5 +5,5 @@
   "singleQuote": true,
   "useTabs": false,
   "quoteProps": "preserve",
-  "endOfLine": "crlf"
+  "endOfLine": "auto"
 }
