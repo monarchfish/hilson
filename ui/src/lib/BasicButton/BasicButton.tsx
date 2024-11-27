@@ -3,7 +3,7 @@
 
 import Button from '@mui/material/Button'
 
-import styles from './BasicButton.module.scss'
+import * as styles from './BasicButton.styles'
 
 export interface ButtonProps {
   text: string
