@@ -47,3 +47,7 @@ out
 
 
 storybook-static
+
+# local env files
+.env*.local
+.env
