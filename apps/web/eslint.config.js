@@ -2,6 +2,7 @@ import { fixupConfigRules } from '@eslint/compat'
 import { FlatCompat } from '@eslint/eslintrc'
 import eslintJs from '@eslint/js'
 import nxEslintPlugin from '@nx/eslint-plugin'
+import pluginQuery from '@tanstack/eslint-plugin-query'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -21,6 +22,7 @@ const configs = [
   ...fixupConfigRules(compat.extends('next/core-web-vitals')),
   ...nxEslintPlugin.configs['flat/react-typescript'],
   ...baseConfigs,
+  ...pluginQuery.configs['flat/recommended'],
   { ignores: ['.next/**/*'] },
   {
     rules: {

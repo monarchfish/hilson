@@ -1,7 +1,20 @@
 export async function GET(request: Request) {
-  console.dir(request)
+  // simulate loading time
+  await new Promise<void>((resolve) => {
+    setTimeout(() => resolve(), 3000)
+  })
 
-  return new Response('Hello, from API!')
+  return Response.json({
+    content: JSON.stringify(
+      {
+        a: 'test',
+        b: 123,
+        c: 'what do you looking for?'
+      },
+      null,
+      4
+    )
+  })
 }
 
 export async function POST(request: Request) {

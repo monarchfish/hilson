@@ -1,10 +1,24 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
 import styles from './EditUpload.module.scss'
 
+const fetchDefaultContent = async () => {
+  const response = await fetch('/api/test')
+
+  return (await response.json()) as {
+    content: string
+  }
+}
+
 export function EditUpload() {
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ['todos'],
+    queryFn: fetchDefaultContent
+  })
+
   const [fileContent, setFileContent] = useState<string>('')
 
   const [fileName, setFileName] = useState<string>('edited-file.txt') // 預設檔名
@@ -55,6 +69,18 @@ export function EditUpload() {
     const json = await response.json()
 
     console.dir(json.message)
+  }
+
+  useEffect(() => {
+    setFileContent(data?.content ?? '')
+  }, [data])
+
+  if (isPending) {
+    return <div>Loading...</div>
+  }
+
+  if (isError) {
+    return <div>{error.message}</div>
   }
 
   return (
