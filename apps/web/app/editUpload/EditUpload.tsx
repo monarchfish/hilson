@@ -16,7 +16,7 @@ export function EditUpload() {
     if (file) {
       const reader = new FileReader()
 
-      reader.onload = (event) => {
+      reader.onload = async (event) => {
         const content = event.target?.result as string
 
         setFileContent(content) // 將檔案內容設定到 state
@@ -40,6 +40,23 @@ export function EditUpload() {
     URL.revokeObjectURL(url) // 釋放 URL 物件
   }
 
+  const handleRequest = async () => {
+    const response = await fetch('/api/test', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        content: 'abcd',
+        fileName: 'filename'
+      })
+    })
+
+    const json = await response.json()
+
+    console.dir(json.message)
+  }
+
   return (
     <div className={styles.container}>
       {/* 檔案上傳 */}
@@ -55,6 +72,11 @@ export function EditUpload() {
       {/* 檔案下載 */}
       <button style={{ marginTop: '1rem' }} onClick={handleDownload}>
         Download Edited File
+      </button>
+
+      {/* API 測試 */}
+      <button style={{ marginTop: '1rem' }} onClick={handleRequest}>
+        Send a request
       </button>
     </div>
   )
