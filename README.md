@@ -2,6 +2,10 @@
 
 練習用 Nx monorepo，包含 Next.js 主應用與共用 UI 元件庫。
 
+## DEMO
+
+https://vue3-playground-peach.vercel.app
+
 ## 技術棧
 
 | 類別 | 技術 |
