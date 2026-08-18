@@ -1,15 +1,19 @@
 'use client'
 
-import React, { useState } from 'react'
-import { BasicButton, UploadFileButton } from '@hilson/ui'
+import { useState } from 'react'
+
 import { TextField } from '@mui/material'
-import * as XLSX from 'xlsx'
+import { saveAs } from 'file-saver'
+
+import { BasicButton, UploadFileButton } from '@hilson/ui'
 
 import { useAlertStore } from '../../../store/useAlertStore'
+import type { JsonRow } from '../utils/excelHelper'
+import { jsonToWorkbook, parseCsvText } from '../utils/excelHelper'
 import styles from './CsvToXlsx.module.scss'
 
 function CsvToXlsx() {
-  const [csvData, setCsvData] = useState<unknown[]>([])
+  const [csvData, setCsvData] = useState<JsonRow[]>([])
 
   const [fileName, setFileName] = useState('')
 
@@ -27,16 +31,10 @@ function CsvToXlsx() {
     const reader = new FileReader()
 
     reader.onload = (event) => {
-      const binaryStr = event.target?.result as string
+      const text = event.target?.result as string
 
       try {
-        const workbook = XLSX.read(binaryStr, { type: 'binary' })
-
-        const sheetName = workbook.SheetNames[0]
-
-        const worksheet = workbook.Sheets[sheetName]
-
-        const json = XLSX.utils.sheet_to_json(worksheet)
+        const json = parseCsvText(text)
 
         setCsvData(json)
         setFileName('converted.xlsx')
@@ -49,24 +47,30 @@ function CsvToXlsx() {
             content: err.message || '文件處理失敗'
           })
         } else {
-          console.log('未知錯誤', err)
+          console.error('Unexpected error during CSV parsing', err)
           setAlertInfo({ visible: true, type: 'error', content: '未知錯誤' })
         }
       }
     }
 
-    reader.readAsBinaryString(file)
+    reader.readAsText(file)
   }
 
-  const exportToXlsx = () => {
+  const exportToXlsx = async () => {
     try {
-      const worksheet = XLSX.utils.json_to_sheet(csvData)
+      const workbook = jsonToWorkbook(csvData)
 
-      const workbook = XLSX.utils.book_new()
+      const buffer = await workbook.xlsx.writeBuffer()
 
-      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1')
+      const blob = new Blob([buffer], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      })
 
-      XLSX.writeFile(workbook, fileName)
+      const outputName = fileName.endsWith('.xlsx')
+        ? fileName
+        : `${fileName}.xlsx`
+
+      saveAs(blob, outputName)
     } catch (err) {
       if (err instanceof Error) {
         setAlertInfo({
@@ -75,7 +79,7 @@ function CsvToXlsx() {
           content: err.message || '匯出檔案失敗'
         })
       } else {
-        console.log('未知錯誤', err)
+        console.error('Unexpected error during XLSX export', err)
         setAlertInfo({ visible: true, type: 'error', content: '未知錯誤' })
       }
     }

@@ -8,11 +8,10 @@ import styles from './DataFormatter.module.scss'
 function PageTitle() {
   return (
     <div className={styles.title}>
-      <h3>Every tool you need to work with PDFs in one place</h3>
+      <h3>Every tool you need to work with data formats in one place</h3>
       <p>
-        Every tool you need to use PDFs, at your fingertips. All are 100% FREE
-        and easy to use! Merge, split, compress, convert, rotate, unlock and
-        watermark PDFs with just a few clicks.
+        All the data conversion tools you need, at your fingertips. Convert
+        between CSV, JSON, XML, and XLSX with just a few clicks.
       </p>
     </div>
   )

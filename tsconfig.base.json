@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hilson/pages": ["pages/src/index.ts"],
       "@hilson/ui": ["ui/src/index.ts"]
     }
   },

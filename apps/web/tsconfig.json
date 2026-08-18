@@ -21,7 +21,8 @@
     "types": ["jest", "node"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@hilson/ui": ["../../ui/src/index.ts"]
     }
   },
   "include": [
