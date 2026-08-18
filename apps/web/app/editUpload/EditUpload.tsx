@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+
 import { useQuery } from '@tanstack/react-query'
 
 import styles from './EditUpload.module.scss'
@@ -13,6 +14,10 @@ const fetchDefaultContent = async () => {
   }
 }
 
+/**
+ * File editor page — upload a text file, edit content in a textarea,
+ * download the result, or POST it to a test API.
+ */
 export function EditUpload() {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ['todos'],
@@ -66,9 +71,7 @@ export function EditUpload() {
       })
     })
 
-    const json = await response.json()
-
-    console.dir(json.message)
+    await response.json()
   }
 
   useEffect(() => {

@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { useRef, useState } from 'react'
+
 import { Popper } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import Container from '@mui/material/Container'
@@ -141,9 +142,16 @@ function Footer() {
 }
 
 interface DataFormatterLayoutType {
+  /**
+   * Page content rendered between the header and the footer.
+   */
   children?: React.ReactNode
 }
 
+/**
+ * Shared layout for all Data Formatter pages.
+ * Renders a navigation header with tool dropdown, main content area, and footer.
+ */
 export function DataFormatterLayout({ children }: DataFormatterLayoutType) {
   return (
     <div className={styles.container}>
