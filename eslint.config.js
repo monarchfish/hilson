@@ -37,9 +37,16 @@ export default [
       'simple-import-sort/imports': [
         'error',
         {
-          'groups': [['^react', '^@?\\w'], ['^@sonar'], ['^\\.', '.styles$']]
+          groups: [
+            ['^react'],
+            ['^@?\\w'],
+            ['^@hilson'],
+            ['^\\.'],
+            ['\\.styles$']
+          ]
         }
-      ]
+      ],
+      'simple-import-sort/exports': 'error'
     }
   },
   {
@@ -53,7 +60,6 @@ export default [
         }
       ],
       'arrow-body-style': ['error', 'as-needed'],
-      'quote-props': ['error', 'consistent'],
       'padding-line-between-statements': [
         'error',
         {
@@ -92,10 +98,24 @@ export default [
           blankLine: 'any',
           prev: 'directive',
           next: 'directive'
+        },
+        {
+          blankLine: 'any',
+          prev: 'export',
+          next: 'export'
         }
       ],
       '@typescript-eslint/no-unused-vars': 'warn',
-      '@typescript-eslint/no-explicit-any': 'off'
+      '@typescript-eslint/no-explicit-any': 'warn'
+    }
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    rules: {
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { prefer: 'type-imports', fixStyle: 'separate-type-imports' }
+      ]
     }
   }
 ]

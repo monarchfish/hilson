@@ -18,12 +18,11 @@ const compat = new FlatCompat({
 })
 
 const configs = [
-  ...fixupConfigRules(compat.extends('next')),
   ...fixupConfigRules(compat.extends('next/core-web-vitals')),
   ...nxEslintPlugin.configs['flat/react-typescript'],
   ...baseConfigs,
   ...pluginQuery.configs['flat/recommended'],
-  { ignores: ['.next/**/*'] },
+  { ignores: ['.next/**/*', 'out/**', 'next-env.d.ts'] },
   {
     rules: {
       'import/no-useless-path-segments': [
