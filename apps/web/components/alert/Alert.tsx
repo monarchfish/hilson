@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect } from 'react'
+
 import { Alert as BaseAlert } from '@mui/material'
 
-import { AlertType } from '../../store/useAlertStore'
+import type { AlertType } from '../../store/useAlertStore'
 import styles from './Alert.module.scss'
 
 interface AlertProps {

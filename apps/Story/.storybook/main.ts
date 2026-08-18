@@ -1,5 +1,5 @@
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
-import { StorybookConfig } from '@storybook/nextjs'
+import type { StorybookConfig } from '@storybook/nextjs'
 import react from '@vitejs/plugin-react'
 import { mergeConfig } from 'vite'
 
